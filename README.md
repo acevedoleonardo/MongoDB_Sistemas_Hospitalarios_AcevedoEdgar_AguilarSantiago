@@ -86,19 +86,29 @@ Para el desarrollo del **Sistema Hospitalario en MongoDB**, se utiliza el siguie
 
 MongoDB Shell y tipiar el siguiente comando
 
-- mongosh 
+```js
+mongosh 
+```
+
+
 
 ## Paso 2: Se crea la Base de Datos 
 
 Utilizando el comando Use se crea la base de datos y se trabaja en ella. 
 
-**use hospitales** 
+```js
+use hospitales
+```
 
 
 
 ## Paso 3: Se Crea las Colecciones
 
-Utilizando el comando db.createCollection("Nombre_Colección ")
+Utilizando el comando db.createCollection
+
+```js
+db.createCollection("Nombre_Colección ")
+```
 
 
 
@@ -120,3 +130,54 @@ db.hospitales.insertMany([
 
 
 
+# ✍🏼 Caso de Estudio ✍🏼
+
+
+
+El Centro Médico Bucaramanga es una red hospitalaria con tres sedes principales en la ciudad, cada una especializada en diferentes áreas médicas como Cardiología, Neurología y Pediatría. Antes de la implementación del proyecto, la información sobre pacientes, personal médico, tratamientos y recursos estaba dispersa en diversos sistemas y registros físicos, provocando retrasos en la atención, duplicidad de datos y dificultades en la toma de decisiones administrativas.
+
+
+
+## 😵‍💫 Problemática 😵‍💫 
+
+
+
+La administración del Centro Médico detectó varios problemas:
+
+●   **Gestión descentralizada de hospitales**: Falta de control sobre las áreas especializadas y la asignación de personal. 
+
+●   **Dificultad para acceder a historiales clínicos completos y actualizados** de los pacientes, lo que afectaba la continuidad de la atención. 
+
+●   **Inventarios de medicamentos ineficientes**, causando faltantes y mal uso de los recursos. 
+
+●   **Procesos manuales en la gestión de agendas médicas**, visitas y asignación de tareas para el personal administrativo y de mantenimiento. 
+
+●   **Débil control de acceso y falta de roles definidos**, lo que generaba problemas de privacidad y seguridad de la información médica.
+
+
+
+# 🪢 Modelado de Base de Datos 🪢
+
+
+
+Se diseño una base de datos partiendo de los requerimientos solicitados por el cliente: 
+
+
+
+●   **Hospitales**: Cada hospital con múltiples áreas especializadas; un director general puede supervisar varios hospitales. 
+
+●   **Personal y Roles**: Registro detallado de médicos, enfermeras, administrativos y mantenimiento, cada uno con permisos específicos. 
+
+●   **Pacientes**: Identificación única, historial médico estructurado, información de contacto y seguros. 
+
+●   **Tratamientos y Medicamentos**: Integración del inventario, costos y relación con áreas médicas. 
+
+●   **Visitas Médicas**: Registro completo con fecha, hora, médico asignado, diagnóstico y seguimiento de visitas múltiples al mismo paciente.
+
+
+
+
+
+
+
+ 
