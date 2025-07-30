@@ -176,6 +176,74 @@ Se diseño una base de datos partiendo de los requerimientos solicitados por el 
 
 
 
+## 🚦 Control de Acceso y Roles de Usuario 🚦
+
+
+
+- Se definieron 5 tipos de usuarios con permisos estrictos según el rol:
+
+  
+
+  * Director general: Acceso total.
+
+  * Médico especialista: Acceso a datos de pacientes y diagnósticos.
+
+  * Enfermero/a: Acceso solo a pacientes asignados.
+
+  - Personal administrativo: Acceso a tareas logísticas y gestión de recursos.
+
+  - Personal de mantenimiento: Acceso solo a datos de infraestructura y tareas asignadas. 
+
+
+
+```js
+db.createRole({
+  role: "directorGeneral",
+  privileges: [
+    { resource: { db: "hospitalDB", collection: "" }, actions: [ "readWrite", "dbAdmin", "userAdmin" ] }
+  ],
+  roles: []
+}),
+
+
+db.createRole({
+  role: "medicoEspecialista",
+  privileges: [
+    { resource: { db: "hospitalDB", collection: "Pacientes" }, actions: [ "find", "update" ] },
+    { resource: { db: "hospitalDB", collection: "HistorialMedico" }, actions: [ "find", "insert" ] },
+    { resource: { db: "hospitalDB", collection: "VisitasMedicas" }, actions: [ "find", "insert" ] }
+  ],
+  roles: []
+}),
+
+db.createRole({
+  role: "enfermeria",
+  privileges: [
+    { resource: { db: "hospitalDB", collection: "Pacientes" }, actions: [ "find" ] },
+    { resource: { db: "hospitalDB", collection: "VisitasMedicas" }, actions: [ "find" ] }
+  ],
+  roles: []
+}),
+
+db.createRole({
+  role: "administrativo",
+  privileges: [
+    { resource: { db: "hospitalDB", collection: "Hospital" }, actions: [ "find", "update" ] },
+    { resource: { db: "hospitalDB", collection: "Personal" }, actions: [ "find", "insert", "update" ] }
+  ],
+  roles: []
+}),
+
+db.createRole({
+  role: "mantenimiento",
+  privileges: [
+    { resource: { db: "hospitalDB", collection: "Hospital" }, actions: [ "find" ] }
+  ],
+  roles: []
+})
+
+```
+
 
 
 
