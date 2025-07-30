@@ -246,6 +246,26 @@ db.createRole({
 
 
 
+## 📄Repositorio y Documentación📄
 
+Todo el sistema, consultas y documentación técnica se integraron en un repositorio publico de GitHub, facilitando el mantenimiento y futuras expansiones.
+
+
+
+## 🍀Resultados🍀
+
+
+
+- **Mejora en la trazabilidad y velocidad de acceso** a la información clínica y de recursos.
+
+- **Eficiencia operativa en la gestión de inventarios**, reduciendo errores y desperdicio de medicamentos.
+
+- **Asistencia médica optimizada** al contar con historiales completos y diagnósticos previos.
+
+- **Mayor seguridad y confidencialidad** mediante control de roles y accesos personalizados.
+
+- **Mejor coordinación interna** a través de reportes automatizados y funciones reutilizables.
+
+  
 
  
