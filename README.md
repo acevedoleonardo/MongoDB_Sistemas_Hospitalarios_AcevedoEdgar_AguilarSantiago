@@ -1,7 +1,6 @@
-# Proyecto BBDD Sistema Hospitalario. 
+# Proyecto BBDD Sistema Hospitalario.
 
 El objetivo del proyecto es diseñar y desarrollar un sistema de base de datos en **MongoDB** que permita gestionar de manera eficiente todas las operaciones relacionadas con la administración de un **Sistema Hospitalario**. Dicho sistema incluirá la gestión de hospitales, pacientes, médicos, tratamientos, medicamentos, visitas médicas, historiales clínicos, áreas especializadas y personal administrativo. 
-
 
 ### Requerimientos del Proyecto
 
@@ -41,7 +40,7 @@ El sistema debe cumplir con las siguientes características estructurales y func
 - Las visitas médicas se registran con fecha, hora, médico asignado, paciente atendido y diagnóstico.
 - Los pacientes pueden tener múltiples visitas médicas a lo largo del tiempo.
 
-###  
+### 
 
 ### 2. Consultas MongoDB
 
@@ -54,7 +53,7 @@ Implementar **100 consultas MongoDB** enfocadas en:
 - Gestión de visitas médicas y estadísticas de enfermedades comunes.
 - Al menos **20 consultas deben incluir agregaciones avanzadas** (`$lookup`, `$unwind`, `$group`, `$project`, `$regex`).
 
-###  
+### 
 
 ### 3. Funciones JavaScript (UDF - Simuladas)
 
@@ -66,7 +65,7 @@ Ejemplos:
 - Generación de reportes de visitas médicas por diagnóstico.
 - Obtención de estadísticas de tratamientos realizados por hospital.
 
-###  
+### 
 
 ### 4. Control de Acceso y Roles de Usuario
 
@@ -77,8 +76,8 @@ Definir **5 tipos de usuarios con permisos específicos utilizando mecanismos de
 - **Enfermero/a:** Acceso limitado a pacientes asignados.
 - **Personal Administrativo:** Gestión de recursos y logística.
 - **Personal de Mantenimiento:** Acceso a tareas de infraestructura.
-
-
+  
+  
 
 Resultado esperado
 
@@ -91,8 +90,8 @@ Además de la implementación de la base de datos y la creación de las consulta
 - Crear un **repositorio privado** en GitHub. Asegúrate de invitar al trainer como colaborador para que pueda revisar el trabajo.
 - El repositorio debe seguir una estructura clara y organizada. Los archivos JSON/BSON deben estar divididos en carpetas según su propósito (e.g., DDL, DML, procedimientos, funciones, triggers, etc.).
 - El **README.md** debe incluir una descripción detallada del proyecto, instrucciones para configurar la base de datos, cómo ejecutar las consultas, procedimientos, funciones y eventos, así como cualquier otra consideración importante.
-
-
+  
+  
 
 ### 2. **Estructura del Repositorio:**
 
@@ -105,7 +104,7 @@ El repositorio debe estar organizado de la siguiente manera:
 - Readme.md
 - Diagrama.jpg (Modelo de datos)
 
-###  
+### 
 
 ### 3. **Contenido del README.md**, El archivo README.md debe estar bien estructurado y contener los siguientes apartados:
 
@@ -121,9 +120,19 @@ El repositorio debe estar organizado de la siguiente manera:
 - **Contribuciones:** Si el proyecto fue desarrollado en grupo, cada integrante debe indicar qué parte del trabajo realizó.
 - **Licencia y Contacto:** Incluir una sección sobre la licencia del proyecto (opcional) y cómo contactarte en caso de preguntas o problemas con la implementación.
 
-###  
+### 
 
 ### 4. **Archivos JSON:**
 
 - Todos los scripts para MongoDB necesarios deben estar incluidos en las carpetas adecuadas. Los nombres de los archivos deben ser claros y descriptivos.
 - Los scripts deben estar bien documentados con comentarios que expliquen el propósito de cada sección, cómo funcionan las consultas o procedimientos, y cualquier otro detalle que facilite su comprensión.
+
+
+
+
+
+# Elaborado Por:
+
+## Edgar Acevedo
+
+## Santiago Aguilar
