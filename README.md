@@ -292,4 +292,52 @@ Todo el sistema, consultas y documentación técnica se integraron en un reposit
 
   
 
- 
+# Planificación
+
+
+
+## Construcción del Modelo Conceptual
+
+
+
+El modelo conceptual representa las entidades principales del sistema, sus atributos y las relaciones entre ellas, estructurando la información necesaria para la gestión hospitalaria. Se recomienda ilustrarlo mediante un diagrama Entidad-Relación (E/R) adaptado a la lógica NoSQL de MongoDB, empleando colecciones y referencias donde sea necesario.
+
+
+
+## Entidades y Relaciones Principales 
+
+
+
+- **Área Especializada**
+  - Atributos: idArea, nombre, idHospital (referencia), descripción.
+  - Relaciones: Cada área pertenece a un hospital y puede agrupar equipo médico especializado.
+- **Personal**
+  - Atributos comunes: idPersonal, nombre, apellido, teléfono, correo, salario, tipo (Director, Médico, Enfermero, Administrativo, Mantenimiento), idHospital.
+  - Relaciones:
+    - Un médico puede estar asignado a varias áreas.
+    - El director puede estar asignado a varios hospitales.
+    - El médico atiende a pacientes en visitas médicas.
+- **Paciente**
+  - Atributos: idPaciente (número de historia clínica), nombre, dirección, teléfono, correo, seguros, historialClínico[].
+  - Relaciones: Un paciente puede tener muchas visitas médicas y múltiples tratamientos asociados.
+- **Historial Clínico**
+  - Atributos: idHistorial, idPaciente (referencia), diagnósticos[], tratamientos[], resultados[].
+  - Relaciones: Hace referencia a diagnósticos y tratamientos recibidos en distintos momentos.
+
+- **Visita Médica**
+  - Atributos: idVisita, fecha, hora, idPaciente, idMedico, diagnóstico, idArea.
+  - Relaciones: Cada visita está ligada a un paciente y un médico.
+- **Tratamiento**
+  - Atributos: idTratamiento, nombre, descripción, idArea, costo, medicamentos[].
+  - Relaciones: Un tratamiento puede usar varios medicamentos y estar relacionado con un área.
+- **Medicamento**
+  - Atributos: idMedicamento, nombre, fabricante, tipo, disponibilidad, inventario.
+- **Acceso y Roles de Usuario**
+  - Atributos: idUsuario, idPersonal, rol (Director, Médico, Enfermero, Administrativo, Mantenimiento), permisos. 
+
+## Descripción
+
+​	Para el desarrollo del modelo, se tomaron como base entidades clave, siendo los hospitales el núcleo principal del sistema. Cada hospital mantiene conexiones directas con sus diferentes áreas especializadas, con el conjunto de su personal (incluyendo médicos, personal administrativo, enfermería, directivos y personal de servicios), así como con los pacientes que reciben atención. Sobre esta estructura fundamental, se modelaron otras entidades relevantes como pacientes, registros de visitas médicas, historiales clínicos, tratamientos y medicamentos, todas ellas interrelacionadas mediante referencias precisas, lo que permite rastrear de manera integral el proceso de atención dentro del sistema
+
+
+
