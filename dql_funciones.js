@@ -1,39 +1,24 @@
+// Verificar funcionalidad 
+
 function getAllHospitales() { return db.hospitales.find().toArray(); }
 function buscarHospitalPorNombre(nombre) { return db.hospitales.find({ nombre }).toArray(); }
 function buscarHospitalPorCiudad(ciudad) { return db.hospitales.find({ direccion: new RegExp(ciudad, "i") }).toArray(); }
-
 function proyectarNombreDirector(){return db.hospitales.aggregate({$lookup:{from:"personal",localField:"director_id",foreignField:"id",as:"director_info"}},{$unwind:"$director_info"},{$match:{"director_info.tipo":"001"}},{$project:{_id:0,nombre_hospital:"$nombre",nombre_director:"$director_info.nombre"}}).toArray();}
-
 function buscarHospitalConArea(area) { return db.hospitales.find({ areas: area }).toArray(); }
-
 function hospitalesConMinAreas(num) { return db.hospitales.find({ ["areas."+(num-1)]: { $exists: true } }).toArray(); }
-
 function contarHospitalesEnCiudad(ciudad) { return db.hospitales.countDocuments({ direccion: new RegExp(ciudad, "i") }); }
-
 function actualizarDireccionHospital(nombre, nuevaDireccion) { return db.hospitales.updateOne({ nombre }, { $set:{direccion:nuevaDireccion} }); }
-
 function agregarAreaAHospital(nombre, area) { return db.hospitales.updateOne({ nombre }, { $push:{areas:area} }); }
-
 function hospitalesSinArea(area) { return db.hospitales.find({ areas: { $ne: area } }).toArray(); }
-
 function buscarHospitalPorDirector(id) { return db.hospitales.find({ director_id:id }).toArray(); }
-
 function quitarAreaAHospital(nombre, area) { return db.hospitales.updateOne({ nombre }, { $pull:{areas:area} }); }
-
 function ordenarHospitalesPorNombre() { return db.hospitales.find().sort({ nombre:1 }).toArray(); }
-
 function hospitalesConMasDeAreas(cantidad) { return db.hospitales.find({ $expr:{ $gt:[{$size:"$areas"}, (cantidad-1)] } }).toArray(); }
-
 function reemplazarHospital(nombre, nuevoDoc) { return db.hospitales.replaceOne({ nombre }, nuevoDoc); }
-
 function contarHospitales() { return db.hospitales.estimatedDocumentCount(); }
-
 function buscarHospitalPorCaracterEnDireccion(car) { return db.hospitales.find({ direccion: new RegExp(car) }).toArray(); }
-
 function hospitalesConMedicinaInterna() { return db.hospitales.find({ areas:"Medicina Interna" }).toArray(); }
-
 function proyectarAreas() { return db.hospitales.find({}, { areas:1, _id:0 }).toArray(); }
-
 function borrarHospital(nombre) { return db.hospitales.deleteOne({ nombre }); }
 
 // ###############################################################################

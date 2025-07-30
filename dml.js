@@ -1,3 +1,6 @@
+// Base De datos 
+
+
 // Creacion de bases de colecciones
 
 db.createCollection("hospitales", {
