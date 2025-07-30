@@ -31,10 +31,28 @@
 
 
 - 🏥Proyecto BBDD Sistemas Hospitalarios  
+
 - 💻 Introducción 
+
 - 🛂Requisitos del Sistema
+
 - 🔧Instalación
+
 - ⚙️Configuración
+
+- ✍🏼 Caso de Estudio
+
+- 😵‍💫 Problemática
+
+- 🪢 Modelado de Base de Datos
+
+- 🚦 Control de Acceso y Roles de Usuario
+
+- 📄Repositorio y Documentación
+
+- 🍀Resultados 
+
+  
 
 
 
@@ -196,6 +214,8 @@ Se diseño una base de datos partiendo de los requerimientos solicitados por el 
 
 
 
+
+
 ```js
 db.createRole({
   role: "directorGeneral",
@@ -246,7 +266,11 @@ db.createRole({
 
 
 
+
+
 ## 📄Repositorio y Documentación📄
+
+
 
 Todo el sistema, consultas y documentación técnica se integraron en un repositorio publico de GitHub, facilitando el mantenimiento y futuras expansiones.
 
