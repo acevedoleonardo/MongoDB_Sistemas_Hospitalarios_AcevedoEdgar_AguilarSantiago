@@ -30,7 +30,7 @@
 
 
 
-- [🏥Proyecto BBDD Sistemas Hospitalarios](#proyecto bbdd sistema hospitalario)
+- [🏥Proyecto BBDD Sistemas Hospitalarios](#proyecto-bbdd-sistema-hospitalario)
 
 - [💻 Introducción](💻 Introducción 💻)
 
