@@ -30,29 +30,29 @@
 
 
 
-- 🏥Proyecto BBDD Sistemas Hospitalarios  
+- [🏥Proyecto BBDD Sistemas Hospitalarios](#Proyecto BBDD Sistema Hospitalario 🏥 .)
 
-- 💻 Introducción 
+- [💻 Introducción](💻 Introducción 💻)
 
-- 🛂Requisitos del Sistema
+- [🛂Requisitos del Sistema](🛂 Requisitos del Sistema 🛂)
 
-- 🔧Instalación
+- [🔧Instalación](🔧 Instalación 🔧)
 
-- ⚙️Configuración
+- [⚙️Configuración](⚙️ Configuración ⚙️)
 
-- ✍🏼 Caso de Estudio
+- [✍🏼 Caso de Estudio](✍🏼 Caso de Estudio ✍🏼)
 
-- 😵‍💫 Problemática
+- [😵‍💫 Problemática](😵‍💫 Problemática 😵‍💫 )
 
-- 🪢 Modelado de Base de Datos
+- [🪢 Modelado de Base de Datos](🪢 Modelado de Base de Datos 🪢)
 
-- 🚦 Control de Acceso y Roles de Usuario
+- [🚦 Control de Acceso y Roles de Usuario](🚦 Control de Acceso y Roles de Usuario 🚦)
 
-- 📄Repositorio y Documentación
+- [📄Repositorio y Documentación](📄Repositorio y Documentación📄)
 
-- 🍀Resultados 
+- [🍀Resultados ](🍀Resultados🍀)
 
-  
+- [🏙️Planificación🏙️](🏙️Planificación🏙️)
 
 
 
