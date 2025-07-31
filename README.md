@@ -343,7 +343,7 @@ El modelo conceptual representa las entidades principales del sistema, sus atrib
 
 ## 📈Grafica📈
 
-<img src="C:\Users\Edgar\Desktop\MongoDB_Sistemas_Hospitalarios_AcevedoEdgar_AguilarSantiago\img\Modelo_Conceptual _ Mermaid Chart-2025-07-31-013747.png" alt="Modelo_Conceptual _ Mermaid Chart-2025-07-31-013747" style="zoom:80%;" />
+<img src="img/Modelo_Conceptual _ Mermaid Chart-2025-07-31-013747.png" > 
 
 
 
