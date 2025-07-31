@@ -32,11 +32,11 @@
 
 - [🏥Proyecto BBDD Sistemas Hospitalarios](#proyecto-bbdd-sistema-hospitalario)
 
-- [💻 Introducción](💻 Introducción 💻)
+- [💻 Introducción](#introduccion)
 
-- [🛂Requisitos del Sistema](🛂 Requisitos del Sistema 🛂)
+- [🛂Requisitos del Sistema](#requisitos-del-Sistema)
 
-- [🔧Instalación](🔧 Instalación 🔧)
+- [🔧Instalación](#instalación)
 
 - [⚙️Configuración](⚙️ Configuración ⚙️)
 
