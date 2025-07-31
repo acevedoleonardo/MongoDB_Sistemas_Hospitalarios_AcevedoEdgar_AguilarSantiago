@@ -343,12 +343,9 @@ El modelo conceptual representa las entidades principales del sistema, sus atrib
 
 ## 📈Grafica📈
 
-<<<<<<< HEAD
+
 <img src="img/Modelo_Conceptual _ Mermaid Chart-2025-07-31-013747.png" > 
 =======
-<img src="img/Modelo_Conceptual _ Mermaid Chart-2025-07-31-013747l" alt="Modelo_Conceptual _ Mermaid Chart-2025-07-31-013747" />
->>>>>>> d7d5042990453622cd2d59edf1075b77525c8b06
-
 
 
 ## 🎯Descripción Técnica 
@@ -377,3 +374,35 @@ Una vez definido el modelo conceptual, avanzamos hacia la construcción del mode
 Durante esta etapa, nos centramos en definir claramente las colecciones, los tipos de datos de cada campo y la forma en que los documentos se enlazan entre sí, mediante referencias o estructuras anidadas, según la necesidad de cada relación. El principal objetivo fue asegurar que todas las relaciones, asociaciones y restricciones planteadas fueran funcionales, eficientes y alineadas con el flujo operativo de un sistema hospitalario real.
 
 El modelo lógico cumple así el rol de puente entre la visión abstracta del sistema (modelo conceptual) y su posterior implementación física, permitiendo anticipar posibles conflictos, optimizar consultas frecuentes y sentar las bases para una gestión robusta e íntegra de la información dentro de la plataforma hospitalaria. 
+
+
+
+## Descripción 
+
+
+
+En el modelo lógico, estructuramos cada entidad como una colección en MongoDB, definiendo claramente sus campos, tipos de datos, referencias cruzadas y relaciones jerárquicas. Las entidades como hospitales, pacientes, personal, tratamientos, medicamentos, visitas médicas, historiales clínicos, seguros médicos y áreas especializadas fueron diseñadas como colecciones independientes, pero estrechamente conectadas entre sí a través de claves foráneas representadas por ObjectId.
+
+
+
+El hospital es el núcleo relacional, al que se asocian otras entidades mediante referencias directas. Por ejemplo, los pacientes, medicamentos y tratamientos se relacionan directamente con el hospital asignado, lo que permite segmentar fácilmente la información por sede. El personal, aunque distribuido en varios roles, se representa lógicamente como una unidad con especialización interna, lo cual optimiza las relaciones con historiales, visitas y tratamientos.
+
+También se definieron relaciones como la que existe entre un historial clínico y sus tratamientos, o entre una visita médica y el médico responsable, estableciendo un flujo informativo que permite reconstruir con precisión el recorrido clínico del paciente.
+
+
+
+- Una tabla está en 1FN si cumple con los siguientes criterios:
+- Todos los atributos contienen valores atómicos (indivisibles).
+- No debe haber grupos repetitivos de columnas.
+- Cada columna debe contener un solo valor en cada fila.
+
+
+
+## Grafica 
+
+
+
+<img src="img/Modelo_Logico _ Mermaid Chart-2025-07-30-045714.png" alt="Diagrama Logico" />
+
+
+
