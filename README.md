@@ -30,31 +30,45 @@
 
 
 
-- [🏥Proyecto BBDD Sistemas Hospitalarios](#proyecto-bbdd-sistema-hospitalario)
+- 🏥Proyecto BBDD Sistemas Hospitalarios
 
-- [💻 Introducción](#introduccion)
+- 💻 Introducción
 
-- [🛂Requisitos del Sistema](#requisitos-del-Sistema)
+- 🛂Requisitos del Sistema
 
-- [🔧Instalación](#instalación)
+- 🔧Instalación
 
-- [⚙️Configuración](⚙️ Configuración ⚙️)
+- ⚙️Configuración
 
-- [✍🏼 Caso de Estudio](✍🏼 Caso de Estudio ✍🏼)
+- ✍🏼 Caso de Estudio
 
-- [😵‍💫 Problemática](😵‍💫 Problemática 😵‍💫 )
+- 😵‍💫 Problemática
 
-- [🪢 Modelado de Base de Datos](🪢 Modelado de Base de Datos 🪢)
+- 🪢 Modelado de Base de Datos
 
-- [🚦 Control de Acceso y Roles de Usuario](🚦 Control de Acceso y Roles de Usuario 🚦)
+- 🚦 Control de Acceso y Roles de Usuario
 
-- [📄Repositorio y Documentación](📄Repositorio y Documentación📄)
+- 📄Repositorio y Documentación
 
-- [🍀Resultados ](🍀Resultados🍀)
+- 🍀Resultados 
 
-- [🏙️Planificación🏙️](🏙️Planificación🏙️)
+- 🏙️Planificación🏙️
 
+- 📖Construcción del Modelo Conceptual📖
 
+- 📖Construcción del modelo Lógico📖
+
+- 🔎Normalización del Modelo Lógico🔎
+
+- 🏋🏻‍♂️Modelo Fisico🏋🏻‍♂️
+
+- Referencias.
+
+- Desarrolladores. 
+
+- 🪪Licencia 🪪
+
+  
 
 
 
