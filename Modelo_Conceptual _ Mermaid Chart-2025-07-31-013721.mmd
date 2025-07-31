@@ -1,0 +1,108 @@
+graph TD
+
+%% Entidades 
+
+Hospital[Hospital]
+Pacientes[Pacientes]
+Personal[Personal]
+Tratamientos[Tratamientos]
+Medicamentos[Medicamentos]
+Visitas[Visitas Medicas]
+
+%% Atributos Hospital
+HId((idHospital))
+HAreas((Áreas especializadass))
+HDir((Director General))
+HDirs((Directores))
+
+%% Atributos Pacientes
+PId((IdPacientes))
+PNombre((Nombre))
+PCorreo((Correo))
+PDireccion((Dirección))
+PTelefono((Teléfono))
+PHistoriaClinica((Número Historia Clínica))
+PHistorialMedico((HistorialMédico))
+PSeguros((Seguros))
+
+%% Atributos Personal
+TId((idPersonal))
+TNombre((Nombre))
+TCorreo((email))
+TColegiatura((Número colegiatura))
+TEspecialidad((Especialidad))
+TTipoEspecialidad((Tipo Especialidad))
+TTelefono((Teléfono))
+TSalario((Salario))
+
+%% Atributos Medicamentos
+MNombre((Nombre))
+MFabricante((Fabricante))
+MTipo((Tipo))
+MDisponibilidad((Disponibilidad))
+
+%% Atributos Tratamientos
+TRCosto((Costo))
+TRNombre((Nombre))
+TRDescripcion((Descripcion))
+TRAreaRel((Área Médica Relacionada))
+
+%% Atributos Visitas Médicas
+VMFecha((Fecha))
+VMHora((Hora))
+VMMedicoAsignado((Medico Asignado))
+VMPacienteAtendido((Paciente Atendido))
+
+%% E-A Hospital
+Hospital --> HId
+Hospital --> HAreas
+Hospital --> HDir
+Hospital --> HDirs
+
+%% E-A Pacientes
+Pacientes --> PId
+Pacientes --> PNombre
+Pacientes --> PCorreo
+Pacientes --> PDireccion
+Pacientes --> PTelefono
+Pacientes --> PHistoriaClinica
+Pacientes --> PHistorialMedico
+Pacientes --> PSeguros
+
+%% E-A Personal
+Personal --> TId
+Personal --> TNombre
+Personal --> TCorreo
+Personal --> TTelefono
+Personal --> TColegiatura
+Personal --> TEspecialidad
+Personal --> TTipoEspecialidad
+Personal --> TSalario
+
+%% E-A Medicamentos
+Medicamentos --> MNombre
+Medicamentos --> MFabricante
+Medicamentos --> MTipo
+Medicamentos --> MDisponibilidad
+
+%% E-A Tratamientos
+Tratamientos --> TRCosto
+Tratamientos --> TRNombre
+Tratamientos --> TRDescripcion
+Tratamientos --> TRAreaRel
+
+%% E-A Visitas Médicas
+Visitas --> VMPacienteAtendido
+Visitas --> VMFecha
+Visitas --> VMHora
+Visitas --> VMMedicoAsignado
+
+%% RELACIONES
+Hospital -- Atiende --> Pacientes
+Hospital -- Cuenta con --> Personal
+Hospital -- Administra --> Medicamentos
+Personal -- Supervisa --> Hospital
+Pacientes -- Tiene --> Visitas
+Visitas -- Realiza --> Personal
+Visitas -- Incluye --> Tratamientos
+Tratamientos -- Usa --> Medicamentos

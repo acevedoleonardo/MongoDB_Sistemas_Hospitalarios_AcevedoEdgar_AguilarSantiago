@@ -62,7 +62,7 @@
 
 
 
-Para el desarrollo del **Sistema Hospitalario en MongoDB**, se utiliza el siguiente entorno:
+Para el desarrollo del **Sistema Hospitalario en MongoDB**, se utiliza los siguiente entornos:
 
 
 
@@ -292,11 +292,11 @@ Todo el sistema, consultas y documentación técnica se integraron en un reposit
 
   
 
-# Planificación
+# 🏙️Planificación🏙️
 
 
 
-## Construcción del Modelo Conceptual
+## 📖Construcción del Modelo Conceptual📖
 
 
 
@@ -304,7 +304,7 @@ El modelo conceptual representa las entidades principales del sistema, sus atrib
 
 
 
-## Entidades y Relaciones Principales 
+## ⛓️Entidades y Relaciones Principales ⛓️
 
 
 
@@ -335,9 +335,41 @@ El modelo conceptual representa las entidades principales del sistema, sus atrib
 - **Acceso y Roles de Usuario**
   - Atributos: idUsuario, idPersonal, rol (Director, Médico, Enfermero, Administrativo, Mantenimiento), permisos. 
 
-## Descripción
+## 🎯Descripción🎯
 
 ​	Para el desarrollo del modelo, se tomaron como base entidades clave, siendo los hospitales el núcleo principal del sistema. Cada hospital mantiene conexiones directas con sus diferentes áreas especializadas, con el conjunto de su personal (incluyendo médicos, personal administrativo, enfermería, directivos y personal de servicios), así como con los pacientes que reciben atención. Sobre esta estructura fundamental, se modelaron otras entidades relevantes como pacientes, registros de visitas médicas, historiales clínicos, tratamientos y medicamentos, todas ellas interrelacionadas mediante referencias precisas, lo que permite rastrear de manera integral el proceso de atención dentro del sistema
 
 
 
+## 📈Grafica📈
+
+
+
+![](C:\Users\Edgar\Desktop\MongoDB_Sistemas_Hospitalarios_AcevedoEdgar_AguilarSantiago\Modelo_Conceptual _ Mermaid Chart-2025-07-31-013747.png)
+
+## 🎯Descripción Técnica 
+
+
+
+El modelo conceptual fue desarrollado bajo un enfoque modular, utilizando **ObjectId** como identificadores únicos para cada documento, y estableciendo referencias explícitas entre ellos para preservar la integridad referencial del sistema. Este diseño garantiza una organización coherente y eficiente de los datos, que facilita tanto la escalabilidad como el mantenimiento.
+
+
+
+Para optimizar la reutilización y mantener un alto grado de normalización, se implementaron arreglos referenciales en campos críticos como `hospital`, `medicamentos, paciente` y `areasEspecializadas`. Esta estrategia permite evitar la redundancia y asegura la consistencia de la información, sin comprometer el rendimiento de las consultas.
+
+
+
+Este modelo conceptual, sustentado en un diagrama entidad-relación (ER) riguroso y coherente, constituye la base sólida para la transición hacia los modelos lógico y físico. Gracias a esta arquitectura, se evita la necesidad de rediseñar relaciones principales y se asegura un manejo robusto, flexible y eficiente de la información médica, administrativa y operativa que soporta el sistema hospitalario.
+
+
+
+
+# 📖Construcción del modelo Lógico📖
+
+
+
+Una vez definido el modelo conceptual, avanzamos hacia la construcción del modelo lógico, en el que transformamos las entidades y relaciones identificadas previamente en una estructura formal adaptada a los principios de una base de datos NoSQL, tomando en cuenta las particularidades de MongoDB.
+
+Durante esta etapa, nos centramos en definir claramente las colecciones, los tipos de datos de cada campo y la forma en que los documentos se enlazan entre sí, mediante referencias o estructuras anidadas, según la necesidad de cada relación. El principal objetivo fue asegurar que todas las relaciones, asociaciones y restricciones planteadas fueran funcionales, eficientes y alineadas con el flujo operativo de un sistema hospitalario real.
+
+El modelo lógico cumple así el rol de puente entre la visión abstracta del sistema (modelo conceptual) y su posterior implementación física, permitiendo anticipar posibles conflictos, optimizar consultas frecuentes y sentar las bases para una gestión robusta e íntegra de la información dentro de la plataforma hospitalaria. 
