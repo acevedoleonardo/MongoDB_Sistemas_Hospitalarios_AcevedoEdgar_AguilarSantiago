@@ -1,8 +1,20 @@
+# Sustentación
+
+  
+
+En el presente proyecto se realizo un video por medio de la plataforma teams microsoft el cual junto a mi compañero dimos a conocer como se realizo nuestro proyecto, a continuacion dejo el Link para que puedan visualizar la grabación en su totalidad. 
+
+Link --->  [Sustentación]([Base de Datos BBDD Proyecto](https://www.youtube.com/watch?v=W53SaTyl6GI))
+
+
+
 # Proyecto BBDD Sistema Hospitalario 🏥 .
 
 
 
 ​	El objetivo del proyecto es diseñar y desarrollar un sistema de base de datos en **MongoDB** que permita gestionar de manera eficiente todas las operaciones relacionadas con la administración de un **Sistema Hospitalario**. Dicho sistema incluirá la gestión de hospitales, pacientes, médicos, tratamientos, medicamentos, visitas médicas, historiales clínicos, áreas especializadas y personal administrativo. 
+
+
 
 
 
@@ -613,7 +625,7 @@ Este proyecto fue desarrollado en conjunto, dividiendo responsabilidades de form
 
 - Desarrollo de los **diagramas Mermaid** para representar el modelo ER.
 - Encargado de la **normalización completa** del modelo hasta 3FN.
-- Apoyo conjunto en la  funcionalidad general del sistema con su compañera.
+- Apoyo conjunto en la  funcionalidad general del sistema con su compañero.
 
 ### Edgar Leonardo Acevedo A.
 
