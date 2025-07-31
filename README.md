@@ -377,7 +377,7 @@ El modelo lógico cumple así el rol de puente entre la visión abstracta del si
 
 
 
-## Descripción 
+## 🎯Descripción 🎯
 
 
 
@@ -403,6 +403,219 @@ También se definieron relaciones como la que existe entre un historial clínico
 
 
 <img src="img/Modelo_Logico _ Mermaid Chart-2025-07-30-045714.png" alt="Diagrama Logico" />
+
+
+
+
+
+
+ 
+
+## 🎯Descripción Técnica
+
+Desde una perspectiva técnica, el modelo lógico se construyó respetando los principios de normalización aplicables al enfoque documental. Se utilizaron referencias (DBRef o manuales con ObjectId) para conectar entidades sin duplicar información, priorizando la eficiencia en la consulta y la integridad referencial. Cada colección cuenta con un identificador único y campos definidos con tipos de datos adecuados (cadenas, números, fechas, arreglos y referencias).
+
+Las relaciones de uno a muchos y muchos a muchos se manejaron principalmente mediante arrays de referencias, como en el caso de los tratamientos que agrupan múltiples medicamentos, o los hospitales que contienen varias áreas especializadas. Además, se incorporaron campos pensados para ser indexados en el futuro, anticipando necesidades de rendimiento en consultas frecuentes.
+
+Las estructuras anidadas se reservaron para datos que no requieren ser consultados de forma independiente, mientras que la información crítica o relacional se gestionó por referencia. Este modelo lógico, respaldado por la gráfica ER construida con notación formal, garantiza una base sólida para el modelo físico, con una estructura clara, relaciones explícitas y una lógica que facilita tanto el desarrollo como el mantenimiento del sistema hospitalario.
+
+
+ 
+
+## 🔎Normalización del Modelo Lógico🔎
+
+
+
+En esta etapa del diseño, aplicamos el proceso de normalización al modelo lógico con el fin de garantizar la integridad, consistencia y eficiencia del almacenamiento de los datos dentro del sistema hospitalario. La normalización permite eliminar redundancias innecesarias, estructurar mejor la información y facilitar su mantenimiento a largo plazo, especialmente en un entorno con múltiples relaciones como lo es un sistema clínico.
+
+A pesar de trabajar con una base NoSQL como MongoDB, aplicamos los principios de normalización clásicos de bases de datos relacionales como una guía metodológica que refuerza la claridad y la organización interna del modelo lógico antes de traducirlo al modelo físico documental.
+
+
+ 
+
+### 1️⃣ Primera Forma Normal (1FN)
+
+
+
+La Primera Forma Normal busca eliminar los grupos repetitivos dentro de una misma entidad, asegurando que cada campo contenga solo valores atómicos y que no existan columnas que almacenen múltiples valores o estructuras anidadas que generen ambigüedad en la lectura o manipulación de los datos. Esta etapa es fundamental, ya que establece las bases para una estructura limpia, donde cada atributo representa una sola información por fila, evitando duplicidades internas y facilitando su posterior análisis o consulta.
+
+
+ 
+
+🎯**Descripción**🎯
+
+Durante la revisión del modelo lógico, identificamos ciertas entidades que inicialmente contenían arreglos o estructuras no atómicas, como listas de tratamientos dentro de un historial clínico, medicamentos dentro de un tratamiento, o múltiples áreas asignadas directamente en el hospital. En el proceso de adaptación a la 1FN, se tomó la decisión de separar estas agrupaciones en colecciones independientes o referenciadas, garantizando que cada documento representara una única instancia de información. Por ejemplo, en lugar de almacenar todos los medicamentos como un array dentro del tratamiento, se transformaron en documentos individuales relacionados mediante ObjectId. De esta manera, cada entidad mantiene una estructura clara y alineada con los principios de atomicidad de datos.
+
+ 
+
+🎯**Descripción Técnica**
+
+Técnicamente, para cumplir con la Primera Forma Normal, nos aseguramos de que todos los atributos definidos en cada colección tuvieran un único valor por registro, evitando campos tipo array cuando estos representaban datos que podían crecer o cambiar dinámicamente.
+
+Se eliminó cualquier tipo de estructura multivaluada que dificultara el acceso individual a los datos. En lugar de eso, implementamos relaciones referenciales donde era necesario, asegurando la unicidad de cada dato y la posibilidad de aplicar operaciones CRUD con mayor precisión.
+
+Esta decisión también facilitó la implementación posterior de índices y filtros, ya que la información al estar desnormalizada por completo permite búsquedas más directas y eficientes. El paso por la 1FN nos permitió consolidar una base sólida sobre la cual aplicar las siguientes formas de normalización con mayor claridad.
+
+
+ 
+
+### 2️⃣Segunda Forma Normal (2FN)
+
+
+
+La Segunda Forma Normal tiene como objetivo eliminar la dependencia parcial de atributos respecto a claves primarias compuestas. En otras palabras, busca que todos los campos de una tabla o colección dependan completamente de la clave primaria y no solo de una parte de ella.
+
+Este principio es especialmente útil en estructuras donde una clave está compuesta por más de un campo, situación que puede provocar redundancia de datos o inconsistencias si no se maneja adecuadamente. Aunque MongoDB no utiliza claves compuestas de forma tradicional, seguimos este principio para asegurar la cohesión lógica de cada documento y evitar atributos que dependan parcialmente de identificadores múltiples.
+
+ 
+
+🎯**Descripción**🎯
+
+Durante el análisis del modelo lógico, identificamos entidades donde existía dependencia parcial, especialmente en aquellos documentos donde se almacenaban atributos que estaban relacionados solo con una parte del contexto.
+
+Por ejemplo, en las visitas médicas, se incluían datos del paciente y del médico, pero también información como la especialidad del médico o el motivo de consulta que, si bien estaban dentro del documento de visita, dependían únicamente del profesional de salud y no de la visita en sí.
+
+En estos casos, se decidió trasladar estos atributos a sus entidades correspondientes (como personal o áreas) y mantener en la colección de visitas únicamente los campos que dependieran directamente del contexto completo de la visita. Este ajuste redujo la redundancia y facilitó una mejor trazabilidad de la información.
+
+
+
+🎯**Descripción Técnica**
+
+Para garantizar el cumplimiento de la Segunda Forma Normal, revisamos las entidades que incluían referencias cruzadas o información contextual duplicada. Se reestructuraron los documentos eliminando campos que no dependían completamente del identificador del documento.
+
+Por ejemplo, la información relacionada con la especialidad médica fue centralizada en la colección de áreasEspecializadas, y los datos del médico se relacionaron mediante referencias, evitando así repetir constantemente información que podía mantenerse de forma centralizada.
+
+En términos de MongoDB, esto se tradujo en colecciones más limpias, enfocadas en un único propósito lógico, con estructuras referenciales claras y sin ambigüedades. Esta separación de responsabilidades dentro de los documentos mejora tanto la organización como la eficiencia al momento de realizar consultas o actualizaciones parciales en el sistema hospitalario.
+
+
+ 
+
+### 3️⃣Tercera Forma Normal (3FN)
+
+
+
+Nos enfocamos en eliminar las dependencias transitivas dentro de una entidad, es decir, asegurar que todos los atributos no clave dependan exclusivamente de la clave primaria y no de otros atributos no clave.
+
+Este principio busca evitar que la información se repita innecesariamente y mejorar la coherencia semántica del modelo. Aunque MongoDB no requiere este tipo de normalización de forma estricta debido a su naturaleza documental, aplicarla conceptualmente refuerza la integridad del diseño lógico previo a su implementación física.
+
+ 
+
+🎯**Descripción**🎯
+
+Al analizar el modelo lógico con base en el nuevo diagrama ER, identificamos varios casos donde se presentaban dependencias transitivas. Por ejemplo, en la entidad personal, atributos como el nombre del rol o la especialidad médica dependían de idRol e idEspecialidad respectivamente, y no del identificador principal del documento (idPersonal).
+
+Por esta razón, estos datos fueron trasladados a colecciones independientes: roles y especialidades_medicas, permitiendo así mantener una sola fuente de verdad para cada tipo de información. Otro caso se dio en facturas, donde detalles como el método de pago o el historial de transacciones eran más adecuados para una colección como pagos, lo cual permite gestionar los abonos de forma individual y reutilizar estructuras.
+
+Esta reestructuración eliminó la dependencia de atributos entre sí y aseguró que todas las colecciones reflejaran únicamente relaciones directas con sus claves primarias.
+
+
+
+🎯**Descripción Técnica**
+
+Para aplicar correctamente la Tercera Forma Normal en este modelo, fragmentamos entidades que contenían campos con dependencias indirectas, y los trasladamos a colecciones especializadas con sus respectivos ObjectId.
+
+Así, roles, especialidades_medicas, pagos, colegiaturas y seguros_medicos se convirtieron en entidades propias, cada una relacionada por referencia con las entidades principales (personal, pacientes, facturas).
+
+Esta separación lógica permite mantener una alta cohesión dentro de cada colección y evita la repetición de atributos como nombre del rol, tipo de seguro o nombre de la especialidad, que podrían estar presentes en múltiples documentos si no se normalizan. Desde la perspectiva técnica, este enfoque mejora la eficiencia del almacenamiento, reduce el riesgo de inconsistencias en actualizaciones y permite escalabilidad en el control de catálogos, roles y transacciones.
+
+
+ 
+
+# 🏋🏻‍♂️Modelo Fisico🏋🏻‍♂️
+
+
+
+En la etapa final del diseño de la base de datos, se realizó la transición del modelo lógico a una **implementación concreta en MongoDB**, adoptando un enfoque estructurado mediante colecciones con validación basada en jsonSchema. Esta metodología permite **garantizar la integridad estructural de los datos** desde el instante en que son insertados, asegurando la calidad y coherencia de la información almacenada en el sistema.
+
+
+
+## 🎯Descripción🎯 
+
+Se crearon múltiples colecciones que representan las **principales entidades del entorno hospitalario** —como hospitales, pacientes, personal, tratamientos, medicamentos, facturas y visitas—, cada una con esquemas rigurosos que especifican los campos obligatorios y los tipos de datos permitidos. Esto previene el registro de información incompleta, duplicada o inconsistente, contribuyendo a la robustez del sistema.
+
+Adicionalmente, se definieron **colecciones complementarias** (por ejemplo, roles, especialidades_médicas, fabricantes, reacciones_adversas) que permiten clasificar y segmentar la información, facilitando tanto su trazabilidad como el mantenimiento e integración futura de nuevas funcionalidades.
+
+La estructura propuesta favorece consultas eficientes, relaciones adecuadas entre documentos y una gestión modular y ordenada de cada componente del sistema.
+
+
+
+## **Ejemplo de Selección o Creación de la Base de Datos**
+
+
+
+Para definir la base de datos principal donde residirán todas las colecciones del modelo hospitalario, se utiliza el siguiente comando:
+
+use hospitales 
+
+Este comando selecciona la base de datos denominada sistema_hospitalario o la crea si no existe, sirviendo como núcleo para el almacenamiento y la organización integral de los datos hospitalarios.
+
+
+
+## **Ventajas del Enfoque Adoptado**
+
+
+
+- **Validez estructural garantizada:** El uso de validadores jsonSchema en cada colección evita errores de inserción y facilita el cumplimiento de los requisitos de negocio.
+
+  
+
+- **Flexibilidad y escalabilidad:** El diseño modular soporta el crecimiento de la base de datos y la expansión funcional, adaptándose a nuevas necesidades operativas.
+
+  
+
+- **Control y trazabilidad:** Las colecciones complementarias aseguran que la información relevante pueda ser gestionada y auditada de manera eficiente en todo momento.
+
+  
+
+Este esquema sienta las bases para una operación segura, eficiente y alineada con las mejores prácticas en el desarrollo de sistemas hospitalarios modernos.  
+
+ 
+
+## Referencias
+
+
+
+- [Bases de Datos No Relacionales](https://www.mongodb.com/resources/basics/databases/non-relational) 
+
+  
+
+ 
+
+# Desarrolladores
+
+https://github.com/acevedoleonardo/PROYECTO_MONGODBS1_AcevedoEdgar_AguilarSantiago 
+
+
+
+**Desarrollado Por: **
+
+Este proyecto fue desarrollado en conjunto, dividiendo responsabilidades de forma clara para asegurar una construcción estructurada y completa del sistema hospitalario:
+
+------
+
+
+
+### Santiago Aguilar Vesga 
+
+- Desarrollo de los **diagramas Mermaid** para representar el modelo ER.
+- Encargado de la **normalización completa** del modelo hasta 3FN.
+- Apoyo conjunto en la  funcionalidad general del sistema con su compañera.
+
+### Edgar Leonardo Acevedo A.
+
+- Responsable de la **documentación completa del proyecto**.
+- Diseño de la idea base parala **estructura de la base de datos** y modelo conceptual.
+- Validación de **consultas** e implementación inicial del código en MongoDB.
+
+------
+
+El proyecto realizado fue elaborado con apoyo contante y comunicación activa, el cual se evidencio el trabajo en equipo.  
+
+------
+
+## 🪪Licencia 🪪
+
+Este proyecto está licenciado bajo la **Server Side Public License (SSPL)** . 
 
 
 
