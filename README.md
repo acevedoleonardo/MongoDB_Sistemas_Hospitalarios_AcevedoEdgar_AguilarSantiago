@@ -343,7 +343,11 @@ El modelo conceptual representa las entidades principales del sistema, sus atrib
 
 ## 📈Grafica📈
 
+<<<<<<< HEAD
 <img src="img/Modelo_Conceptual _ Mermaid Chart-2025-07-31-013747.png" > 
+=======
+<img src="img/Modelo_Conceptual _ Mermaid Chart-2025-07-31-013747l" alt="Modelo_Conceptual _ Mermaid Chart-2025-07-31-013747" />
+>>>>>>> d7d5042990453622cd2d59edf1075b77525c8b06
 
 
 
