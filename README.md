@@ -4,7 +4,7 @@
 
 En el presente proyecto se realizo un video por medio de la plataforma teams microsoft el cual junto a mi compañero dimos a conocer como se realizo nuestro proyecto, a continuacion dejo el Link para que puedan visualizar la grabación en su totalidad. 
 
-Link --->  [Sustentación]([Base de Datos BBDD Proyecto](https://www.youtube.com/watch?v=W53SaTyl6GI))
+Link --->  [Base de Datos BBDD Proyecto](https://www.youtube.com/watch?v=W53SaTyl6GI)
 
 
 
